@@ -46,10 +46,11 @@
     
 
     
-<section class="hero-unit" style="background-image: url(/static/img/work.jpg);">
+<section class="hero-unit" style="background-image: url(/static/img/posts/2.jpg);">
   <div class="overlay"></div>
   <div class="inner">
-    <h1>Work related</h1>
+    <h1>Python ObjectTracker</h1>
+    <p class="post-meta">Post date : July 04, 2015</p>
   </div>
 </section>
 
@@ -57,27 +58,40 @@
     <section class="content">
       <div class="wrapper">
         
-<h2 class="text-center">Work Related Software</h2>
+<div class="post">
 
-<h3><a href="https://github.com/ninehundred1/CalciumSignalExtract">Calcium Signal Extract</a></h3>
-<p> Created a Matlab Software package that automatically segments fluorescence image stacks into ROIs based on correlated temporal and spatial dynamics of pixel values. Differential morphology and fluorescence activity of the individual cells is automatically extracted and plotted.</p>
+  <div class="post-content">
+    <p>Track multiple (10s - 100s) of objects in a video or a camera stream and define areas where entry of an object is to be monitored.</p>
+<p>Creates data output in the form of images and also saves the raw data in .txt files.</p>
+<p>Below is an example of the output of two tracked objects. The upper left image shows the speed of the objects, blue like colors depict
+a slow speed, brighter colors a faster speed. At the top right the track of two objects (yellow and blue) is shown and three 
+target areas that have been defined.</p>
+<p>The bottom panel shows the times the different objects (yellow and blue) were inside target area 2.</p>
+<p><em>Output Example of all objects</em>
+<img alt="OBJECTTRACKER_allobjects" src="http://i.imgur.com/Odb3XIc.png" /></p>
+<p>The next graphic shows the track, speed and position in the form of a heatmap of object 1.
+The bottom panels show the distance object 1 covered during the tracking and the speed while tracked.</p>
+<p><em>Output Example of the details of the track object 1</em>
+<img alt="OBJECTTRACKER_allobjects2" src="http://i.imgur.com/NgPeQgm.png" /></p>
+<h5>Instructions are shown in the actual movie file or stream before it starts playing (eg see below).</h5>
+<p><img alt="OBJECTTRACKER_allobjects2" src="http://i.imgur.com/eBl9VPK.png" /></p>
+<p>Currently only color files are supported, it does not yet work with grayscale files.</p>
+<h3>To run you need python2 and the following packages:</h3>
+<p>cv2
+matplotlib
+pyplot
+numpy
+Tkinter</p>
+<p>Download all files (click Download ZIP on the right), unzip and copy them into a folder YourFolder then you can run
+the wrapper file do_track.py from the windows command prompt</p>
+<pre><code>c:YourFolder python do_track.py
+</code></pre>
 
-<h3><a href="https://github.com/ninehundred1/BehaviorBox">Behavioral Training</a></h3>
-<p>Developed a Matlab platform for controlling multiple different behavioral paradigms in terms of stimuli and different modules. Hardware interfacing with RFID sensors, microcontrollers, valves and LEDs. Visual stimuli are generated in multiples ways. Data is analysed and plot in real time.</p>
+<p>I will work on some more fixes and then also generate a standalone executable file that does not need python.</p>
+<p>The whole thing is available <a href="https://github.com/ninehundred1/ObjectTracker">at Github</a></p>
+  </div>
 
-<h3><a href="https://github.com/ninehundred1/ObjectTracker">Object Tracker</a></h3>
-<p>Build a Python package that can track multiple (10s - 100s) of objects in a video or a camera stream and define areas where entry of an object is to be monitored using computer Vision libraries.</p>
-
-<h3><a href="https://github.com/ninehundred1/ScanImage_Navigator">ScanImage Navigator</a></h3>
-<p>Developed a Matlab GUI plugin to read the stepper motors of the microscope stage/objective in a coordinate system. Movement paths can be plotted, recorded and commands be sent to the microscope motors to program the stage movement.</p>
-
-<h3><a href="https://github.com/ninehundred1/n_sci">Misc Python stuff</a></h3>
-<p>Different Python Scripts and functions for image analysis and handling</p>
-
-
-
-
-
+</div>
 
       </div>
     </section>

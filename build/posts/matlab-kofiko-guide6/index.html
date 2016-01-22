@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Stephan Meyer | Stephan</title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/components/ionicons/css/ionicons.css">
+
+    <script src="https://use.typekit.net/fti0giy.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/static/js/prettify.js"></script>
+    <script src="/static/js/app.js"></script>
+  </head>
+  <body onload="prettyPrint()">
+    
+    <header class="site-header">
+      <div class="wrapper">
+        <a class="site-title" href="/">Stephan Meyer zum Alten Borgloh</a>
+        <nav class="site-nav">
+          <div class="trigger">
+            <a class="page-link1" href="/about/">About</a>
+            <a class="page-link2" href="/posts/">Notes&Posts</a>
+            <a class="page-link3" href="/projects/">Projects</a>
+            <a class="page-link4" href="/work/">Work</a>
+            <a class="page-link5" href="/resume/">Resumé</a>
+          <ul class="social-links">
+            <li><a href="https://github.com/ninehundred1"><i class="icon ion-social-octocat"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/stephan-meyer-zum-alten-borgloh-bb664055"><i class="icon ion-social-linkedin"></i></a></li>
+            <li><a href="mailto:meyernsen@gmail.com"><i class="icon ion-email"></i></a></li>
+             
+
+
+
+        </ul>
+       </div>
+        </nav>
+      </div>
+    </header>
+    
+
+    
+<section class="hero-unit" style="background-image: url(/static/img/posts/6.jpg);">
+  <div class="overlay"></div>
+  <div class="inner">
+    <h1>Kofiko Guide</h1>
+    <p class="post-meta">Post date : January 07, 2016</p>
+  </div>
+</section>
+
+
+    <section class="content">
+      <div class="wrapper">
+        
+<div class="post">
+
+  <div class="post-content">
+    <p>Use Kofiko to control your touch screen behavior experiments. It allows you to run the Matlab Psychotoolbox within a wrapper for easy generation of new paradigms.</p>
+<p>Below is a guide how to set up Kofiko to work with a touchscreen and how to modify the paradigms. You need two screens in this tutorial, the right screen needs a lower resolution (as does the touch screen if you want to run it this way). The left screen is a direct mirror of the touch screen. Additionally to that there are also GUI elements that allow for different settings. As those elements need screen size, the left (experimentator) screen needs to be wider in the number of pixes. It is also possible to connect to computers, which we are not doing here.
+You would also need hardware connected to handle the giving of a reward, turning on of an LED or whatnot you like to add. You can use different devices, including an Ardunio. Look in the manual for more info on that.</p>
+<p>When done, it should look like this (right is what the animal sees, left what the experimentor sees).</p>
+<p><img alt="alt text" src="http://i.imgur.com/5LiBlrD.jpg" title="Kofiko" /></p>
+<p>Kofiko is made by Shay Ohayon, California Institute of Technology. </p>
+<h1>PART1 - SETTING UP</h1>
+<p>These 5 steps below need to be done just to get Kofiko working.
+I have not tried newer matlab than 2012, so not sure that works. Also we use 32 bit matlab 2009-2012 (64 will not work with the current mex files it seems). If you only have 64bit matlab (go to the folder where matlab is installed <strong>(eg C:\ProgramFiles\MATLAB\R2012a32bit\bin)</strong> and see if there is a folder win32. If there is only win64, you need to download the 32bit version of Matlab. Go to the mathworks website, enter your info and then look for previous versions and install the 32bit of matlab 2012.</p>
+<h3>1. Download Kofiko.</h3>
+<p>Now you have two options:
+A. if you want to do the whole tutorial,
+download the original zip from here:
+https://github.com/shayo/Kofiko
+or clone using git:</p>
+<blockquote>
+<p>git clone https://github.com/shayo/Kofiko</p>
+</blockquote>
+<p>if that file it not available anymore, use the <em>original</em> branch here
+https://github.com/ninehundred1/Kofiko/tree/original</p>
+<p>B. if you want to just set it up to work the way it does here but not go into details, download the current working Version from here</p>
+<p>https://github.com/ninehundred1/Kofiko/tree/tutorial</p>
+<p>In either case, unzip the file you downloaded, this is the whole of Kofiko.</p>
+<h3>2. Make a new environment variable in windows</h3>
+<p>go to the windows task bar and click <em>start-control panel-system and security-system-
+advanced system settings-environment variable</em>, then on the bottom click new.. and type in a new name: </p>
+<blockquote>
+<p>MATLAB32BIN</p>
+</blockquote>
+<p>and the value needs to be the path to the 32bit MATLAB.exe, for example</p>
+<blockquote>
+<p>C:\Program Files\MATLAB\R2012a32bit\bin\win32\MATLAB.exe</p>
+</blockquote>
+<p>this path might be different on your computer. 
+then click ok.</p>
+<h3>3. Install Psychtoolbox-3</h3>
+<p>Download Psychtoolbox from here (follow steps 1-6)
+http://psychtoolbox.org/download/#Windows</p>
+<h3>4. Update the config files.</h3>
+<p>Go to the folder
+<strong>Kofiko\Config\KofikoConfigForDifferentRigs</strong></p>
+<p><strong>A.</strong> Open Default.xml in notepad (right click then <em>edit</em>) and change the directory for the <em>LogFolder</em> to your own log folder (make a new folder called Log somewhere and enter the path here, that is where the logs of the pogram and the timestamp data will be saved for each experiment).
+Then change the path of <em>PTB_Folder</em> to where your Psychtoolbox got installed (likely C:\toolbox\Psychtoolbox). Change <em>SingleComputerMode</em>  to "1" and then save file.</p>
+<p><strong>B.</strong> Open TouchScreen.xml in notepad and change the same things as above (this is the mode we will use to try out Kofiko) and also change AudioDeviceName to "Primary Sound Driver" to avoid an error (we need to reset that later to some other soundcard) save file under a new name using quotations ("") and .xml ending, otherwise it will save as .txt.(eg "TouchScreen_try.xml")</p>
+<h3>5. Start Kofiko</h3>
+<p>To start Kofiko, there is a bat file (<em>Run_KOFIKO.bat</em>) in the Kofiko folder, which you can either start from the terminal or just double click the file name. It will start matlab, set matlabs directory to the current directory and start the file RegisterGUI. </p>
+<p><strong>This should be all to get Kofiko running and installed.</strong></p>
+<h3>Not starting</h3>
+<p>in the case you click Start Kofiko! and it does nothing but print <em>Data saved!</em> in the Matlab Command Window it usually means that you did not connect (or correctly set up) the hardware interface. Look at the xml file in the config folder (see 4.) and this section and make sure you set the right names, etc:</p>
+<blockquote>
+<p>&lt;DAQ</p>
+<p>VirtualDAQ = "1"</p>
+<p>AcqusitionCard = "arduino"</p>
+<p>AcqusitionCardBoard = "0"</p>
+</blockquote>
+<h1>Modifying Kofiko</h1>
+<p>Now below are examples to modify Kofiko to your needs with a touch screen in this example.</p>
+<p>The contents of the file Run_KOFIKO.bat are:</p>
+<p><strong>start "Kofiko" "%MATLAB32BIN%" -nosplash -r "addpath(genpath(pwd())); RegisterGUI"</strong></p>
+<p>this file does this:
+1. set the window title to 'kofiko'
+2. start matlab (environment variable name is MATLAB32BIN, which links to the location of matlab.exe)
+3. -nosplash is to not show matlab splash screen
+4. -r is extra stuff (addpath adds the current folder to the matlab directory, RegisterGUI is the m file that gets executed when matlab opens).</p>
+<p>when RegisterGUI is called it opens a GUI, from where everything else gets executed within Matlab. </p>
+<p>When the GUI called RegisterGUI is on the screen, select a picture/profile, then use <strong>TouchScreen_try</strong> (or the name you gave the xml file just above) as the Rig Specific configuration file and click <strong>Start Kofiko!</strong></p>
+<p>A window will appear asking to Start a plexon recording file, just click Ok.</p>
+<p>Now the PsychoToolbox should start up and you should see an image of a monkey. The left screen is the experimentor screen, which shows on the left side what the monkey sees, also including statistics (number of trials, etc), on the right of the left screen are GUI settings. 
+To be able to activate the mouse, move the cursor down to the task bar on the bottom of the screen, hover it over the matlab icon and click the window <em>PBT Onscreen Window</em>.</p>
+<p>Now you can move the cursor up back to the settings and change Paradim to Touchscreen training and click start.</p>
+<p>This should then get you the default touch training mode, where on the right you have what the monkey sees, on the left what the experimentor sees. The goal is to touch the white circle to get a reward. Move the mouse all the way to one side (right) until it comes out the other screen on the left and it now should leave a trail on the Kofiko machine (the left screen is run by the kofiko machine and is what the experimentor sees, the right screen is what is on the touch screen and what the monkey sees, also called the stimulus server). This trail is supposed to be the eye tracking of the monkey eye, but as we use it in touchscreen mode it is where the touchscreen is touched.
+If you use the mouse, whenever the mouse xy coordinates change, that is considered a touch. As would be the case if you drag your finger over the screen without ever lifting it. So if the mouse is not within the circle and is moved, the first pixel it moves to is considered the input, so very unlikely will you make it into the circle.
+When done, close the window (press the small x top right on the Kofiko machine (the left screen, the one with the buttons)).</p>
+<p>This is the out of the box working of Kofiko.</p>
+<h1>Setup your own paradigm</h1>
+<p>Now you can start to create your own pradigm. Go to the documents folder and read through the <strong>manual.doc</strong> file. That's the manual for the old version of Kofiko, but it should get you some more information. </p>
+<p>What basically happens is that Kofiko will run its main program, where it will run a series of functions, which can be modified with your stuff. There are 9 main functions that will be used by Kofiko (all have the same name of YourParadigmX where X is what the function does (eg draw, gui, cycle, etc), so keep the same<br />
+name system (change YourParadigm, keep the last part).
+For example, Kofiko will start by using the <em>init</em> function, then generate a user interface (the right side of the left screen with all the sliders, etc) based on what you put in the <em>GUI</em> function. Kofiko will then follow the procedure (show stimulus, wait, give reward, play sound, etc) depending on what you put in the <em>Cycle</em> 
+function. It will show the stimulus depending on what you put in the <em>Draw</em> function, etc. </p>
+<p>In the Documents folder open the <strong>NewParadigmProtocol.doc</strong> file.
+This file tells you in detail what needs to be done to set up a new paradigm with your own settings and stimuli. It will show you the sequence of when what function is called and what Kofiko requires to keep working.
+In our case the Stimulus server and the Kofiko machine are the same (but we now refer the left experimentator screen as <em>Kofiko machine</em>, the right touch screen as <em>stimulus server</em>). You can run it in a mode where you have a second computer that just shows the stimulus (which would then be the Stimulus server), but we use the same computer, just with a second screen (the touch screen).
+Read through the doc file and get an idea what is needed. </p>
+<h4>Copy files</h4>
+<p>Now start making your own paradigm. Make a copy of the folder <em>TouchScreenTraining</em> (in TouchParadimgs) and name it whatever you want (eg <em>TouchImageTraining</em>). Then you need to rename each of the function (replace <em>Screen</em> with <em>Image</em>) to eg <em>fnParadigmTouchImageTrainingCallbacks.m</em> and 
+<em>fnParadigmTouchImageTrainingClose.m</em> etc.
+This will get you your own copy of files and you can always check with the originals if something screws up.</p>
+<p>Next go to the folder <strong>Kofiko\Config\KofikoConfigForDifferentRigs</strong> open the <em>Touchscreen.xml</em> file in notepad and save it (using " signs) as what your paradigm is called eg <em>"TouchImageTraining.xml"</em>.
+This will create the config file that you can load when starting Kofiko.</p>
+<p>Check the entries for <em>LogFolder</em>, <em>PTB_Folder</em> (those you should have already changed before, so should be fine). Then go down to  <strong><Paradigm Name = "Touch Screen Training"**. Copy everything between (and including) the block **"<Paradigm Name"** and **"> </Paradigm>"</strong> (there are more than one, take only the smallest 
+block) and paste it  before  <strong>"&lt;Paradigm Name = "Touch Force Choice""</strong>.
+Then change the name <em>Touch Screen Training</em> to what you want (eg <em>Touch Image Training</em>). This is the protocol you will modify.</p>
+<p>Next change all the functions to your new functions you created above, so Kofiko will call your fuctions, not the old ones. So change for example <strong>Callbacks =<br />
+"fnParadigmTouchScreenCallbacks"</strong> to <strong>Callbacks = "fnTouchImageTrainingCallbacks"</strong>, so now Kofiko knows when it<br />
+wants to call Callbacks to not use the <em>TouchScreen</em> function, but your function (eg <em>TouchImageTraining</em>). </p>
+<p>There are a total of 9 function names to change.</p>
+<p>Save the file and then run Kofiko again (double click <em>Run_KOFIKO.bat</em>), you might have to exit matlab before, so it will read the new file with your added paradigm. When the window with the images appears there should now be the option to select your xml file (eg <em>TouchImageTraining</em>)</p>
+<p>Then the other windows should show up. Again go hover the mouse of the matlab symbol and click <em>PBT Onscreen Window</em> to activate the window. Then go to Paradigm and select your Touch Image Training paradigm and run it.</p>
+<p>It should work just as before.</p>
+<p>When done, close the window (press the small x top right on the Kofiko machine (left screen, the one with the buttons).
+Now you know how to make and run your own paradigm, and now you can start to change it. All changes will be made in this config file (we now call it <strong>TouchImageTraining</strong>) and will modify the paradigm <strong>Touch Image Training</strong> inside of it (same name, but the way it is made that you have the one top level config file with many different paradigms inside of it.</p>
+<h1>Changing the paradigm</h1>
+<p>Let's start to change things. ALl changes are now made in our new folder <em>Kofiko\Paradigms\TouchParadigms\TouchImageTraining</em> and on the new functions we copied and renamed.
+If you read the <strong>NewParadigmProtocol.doc</strong> file you have a rough idea what each of the function is responsible for. </p>
+<h4>Fix spot position</h4>
+<p>The first thing we change is to stop the round white circle from randomly moving around but moving it to the bottom of the screen in a fixed position. We can also change the color to green.</p>
+<p>Open the file <strong>fnParadigmTouchImageCycle.m</strong> which is basically the main function of kofiko (there is a drawCycle function also, which is related to the draw function).</p>
+<p>Int the imageCycle function you can see the different cases (or MachineStates) that Kofiko can carry out. If Kofiko moves into state 4, there will be dot shown on the screen, if it moves to state 7, wait for the money to stop touching the screen, etc.</p>
+<p>We want to change where the position of the circle is defined, so we are interested in state 1. This is not the actual state where the circle is shown (that is done in state 4), but here the new position of the circle is already set, so later the circle can be shown without delay.</p>
+<p>The section that defines where the circle is shown is here and these are steps that are done for a random placement:</p>
+<ol>
+<li>
+<p>get the screen size of the screen (so we know where the borders are)</p>
+<p>% Set Next Touch Position
+aiStimulusScreenSize = fnParadigmToKofikoComm('GetStimulusServerScreenSize');</p>
+</li>
+<li>
+<p>get the value for the size of the spot (we set that in the config file)   </p>
+<p>fSpotSizePix = fnTsGetVar(g_strctParadigm,'SpotRadius');</p>
+</li>
+<li>
+<p>calculate a new pixel position by taking the spot size and then adding a random portion of the screen length (or height), where the spot size has been distracted. So in the case of the screen being 1000 pixels wide, you add a random % of that (eg 0.2 * 1000 gets you pixel number 200). rand return a random value from 0.0 to 1.0 (eg 0.2). You need to make the screen slightly smaller to allow for the circle to fit (spotsizepix), so the circle is not half cut off. You do the same for x and y.</p>
+<p>fSpotX = fSpotSizePix + rand()<em>(aiStimulusScreenSize(3)-2</em>fSpotSizePix);
+fSpotY = fSpotSizePix + rand()<em>(aiStimulusScreenSize(4)-2</em>fSpotSizePix);</p>
+</li>
+<li>
+<p>Now you just need to update the variables with the new x and y position.</p>
+<p>g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos = [fSpotX,fSpotY];
+g_strctParadigm.m_strctCurrentTrial.m_fSpotRad = fSpotSizePix;</p>
+</li>
+</ol>
+<p>As we don't want it to be displayed at a random position, we need to remove the rand multiplier. It is a good idea to make the position dependend on the screen size (20% of screen) rather than using absolute values (pixel 800), so we are flexible with different screen sizes.</p>
+<p>So we will replace rand with 0.2 in x and 0.8 in y (pixel 0,0 is the top left) to show the dot in the bottom left corner (20% of x and 80% of y).</p>
+<p>So now go ahead and change the lines to this:</p>
+<pre><code>  fSpotX = fSpotSizePix + 0.2*(aiStimulusScreenSize(3)-2*fSpotSizePix);
+    fSpotY = fSpotSizePix + 0.8*(aiStimulusScreenSize(4)-2*fSpotSizePix);
+</code></pre>
+<p>We can now see what we get by again running Kofiko (if the RegisterGUI is still open, just click Start Kofiko! again, otherwise restart by <strong>Run_KOFIKO.bat</strong> and choose our
+configuration <strong>TouchImageTraining</strong> when starting, then after we hovered over the matlab icon and activate <em>PBT Onscreen Window</em> we choose <strong>Touch Image Training</strong> as the paradigm.</p>
+<p>Now we should be able to catch the dot and get some rewards, as we know where it will show up.</p>
+<p>When done, close the window (press the small x top right on the Kofiko machine (left screen, the one with the buttons).</p>
+<h4>Change color of dot</h4>
+<p>Now let's change the dot into a square. If you look through the function it seems that the part that actually shows the spot is this (in bold):</p>
+<pre><code>  % Send a command to display the spot on the stimulus server
+      fFlipTime = fnDrawSpotOnStimulusScreen(g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos, ...
+                                 g_strctParadigm.m_strctCurrentTrial.m_fSpotRad,[255 255 255]);
+</code></pre>
+<p>Namely, <strong>fnDrawSpotOnStimulusScreen</strong>.</p>
+<p>We can see that this is a user function and it is actually defined at the bottom of the matlab file. The part that does the actual drawing of the dot is </p>
+<pre><code>Screen(g_strctStimulusServer.m_hWindow,'FillArc',aiColor, aiTouchSpotRect,0,360);
+</code></pre>
+<p>If you look into the <a href="http://docs.psychtoolbox.org/FillArc">documentation for Screen() in the Psychotoolbox</a>, you can see that is has this template:</p>
+<blockquote>
+<p>Screen('FillArc',windowPtr,[color],[rect],startAngle,arcAngle)</p>
+</blockquote>
+<p>Now if we want to change the color of the dot, all we need to do is change the [color] triplet (<em>aiColor</em>) in this file, which is passed into the function when called. So to change the color, we go to the point where the function is called (also see right above) and we can see the color triplet that is passed in is <strong>[255 255 255]</strong>. </p>
+<p>In the matlab file we go back up again to where the function is called (<em>case 4</em>) and change in the line </p>
+<pre><code> % Send a command to display the spot on the stimulus server
+      fFlipTime = fnDrawSpotOnStimulusScreen(g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos, ...
+                                 g_strctParadigm.m_strctCurrentTrial.m_fSpotRad,[255 255 255]);
+</code></pre>
+<p>the color triple [255 255 255], which is white, to [255 0 0], which is red. We save the matlab file and press <em>Start Kofiko</em> again, catch the dot and when done, close the window (press the small x top right on the Kofiko machine (left screen, the one with the buttons).</p>
+<p>http://docs.psychtoolbox.org/FillRect</p>
+<h2>PART2</h2>
+<h4>Add second dot</h4>
+<p>Now we add a second dot in a green color. As above, we want to look where the current red circle is defined in position, and there we add a second position for the second circle. We need to do that for both, the Kofiko Machine (what the experimentor sees, or the Draw.m file) and for the Stimlus Server (what the monkey sees, so the touch screen or the Cycle.m file).</p>
+<h5>Stimulus server (Cycle file)</h5>
+<p>Go to <strong>fnParadigmTouchImageCycle.m</strong> and <strong>state 1</strong> (case 1).</p>
+<p>As with the first spot, the coordinates for display are stored here:</p>
+<pre><code>g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos
+</code></pre>
+<p>We keep everything for the first spot, but change the name to</p>
+<pre><code>g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Green
+</code></pre>
+<p>Now for the second spot we want the same size of the spot and the same height, just a different side (x) position, so we just need to modify fSpotx, moving the spot to the bottom right.</p>
+<p>So the modified section now looks like this:</p>
+<pre><code>fSpotSizePix = fnTsGetVar(g_strctParadigm,'SpotRadius');
+    %set first spot position
+    fSpotX = fSpotSizePix +     0.2*(aiStimulusScreenSize(3)-2*fSpotSizePix);
+    fSpotY = fSpotSizePix + 0.8*(aiStimulusScreenSize(4)-2*fSpotSizePix);
+    %update spot 1 position and size in structure 
+    g_strctParadigm.m_strctCurrentTrial.m_fSpotRad = fSpotSizePix;
+    g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Green = [fSpotX,fSpotY];
+    %change x for the second spot
+    fSpotX = fSpotSizePix + 0.8*(aiStimulusScreenSize(3)-2*fSpotSizePix);
+    %update spot 2 position and size in structure 
+    g_strctParadigm.m_strctCurrentTrial.m_fSpotRad = fSpotSizePix;
+    g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Red = [fSpotX,fSpotY];
+</code></pre>
+<p>As now the old name <em>m_pt2fSpotPos</em> has changed to <em>m_pt2fSpotPos_Green</em> we need to make sure that those two spots are handles correctly in the dependent functions.</p>
+<p>The first one is within the same file the section of <strong>state/case 4</strong>.
+The part that displays the spot is the function </p>
+<pre><code>fFlipTime = fnDrawSpotOnStimulusScreen(g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos, ...
+                                 g_strctParadigm.m_strctCurrentTrial.m_fSpotRad,[255 255 255]);
+</code></pre>
+<p>This is a user function that is defined at the bottom of the file. It returns fFlipTime which is a timestamp of the time a small rectangle is shown. You can connect a small light reader to the screen and measure when the rectangle is shown, independent of this whole program. Then you can later on align the time the rectangle is shown with the timestamp value of fFlipTime and then precisely find out when the monkey was shown the image. 
+We will leave this in, though it is not necessary to have yet.</p>
+<p>What we need to do is adapt that user function <em>fnDrawSpotOnStimulusScreen</em> to show two dots instead of one.
+So go all the way to the bottom, copy the function <em>fnDrawSpotOnStimulusScreen</em> and past it below and rename it to <strong>fnDrawTwoSpotsOnStimulusScreen</strong>. The parameters this function takes are the 1. position of spot, 2. size of spot, 3. color triplet.
+To adjust it for two spots we need to add a second 1 and 3 for our second spot (the size we keep the same).
+So change the parameters to </p>
+<pre><code>fnDrawTwoSpotsOnStimulusScreen(pt2iSpot_A,pt2iSpot_B, fSpotSizePix,aiColor_A,aiColor_B)
+</code></pre>
+<p>Then we just a second call to <em>Screen()</em> which is the psychotoolbox command for displaying something (our spot). <em>aiTouch</em> is the actual shape that is generated from the xy position and the size value of the spot. So we need to update that also for the second spot before we call Screen(). As mentioned above we keep fnFlipWrapper unchanged. </p>
+<p>The whole new function looks like this:</p>
+<pre><code>function fFlipTime = fnDrawTwoSpotsOnStimulusScreen(pt2iSpot_A,pt2iSpot_B, fSpotSizePix,aiColor_A,aiColor_B)
+global g_strctStimulusServer
+aiTouchSpotRect = [pt2iSpot_A(:)-fSpotSizePix;pt2iSpot_A(:)+fSpotSizePix];
+Screen(g_strctStimulusServer.m_hWindow,'FillArc',aiColor_A, aiTouchSpotRect,0,360);
+aiTouchSpotRect = [pt2iSpot_B(:)-fSpotSizePix;pt2iSpot_B(:)+fSpotSizePix];
+Screen(g_strctStimulusServer.m_hWindow,'FillArc',aiColor_B, aiTouchSpotRect,0,360);
+fFlipTime = fnFlipWrapper( g_strctStimulusServer.m_hWindow);%, 0, 0, 1); % Non blocking flip
+return;
+</code></pre>
+<p>Now as we have a new display function, we go to where we want this function to be called, <strong>case 4</strong>.</p>
+<p>The old function call <em>fnDrawSpotOnStimulusScreen</em> is not needed anymore, so you delete or comment out that part. At the same position we now add a call to our new function. We need to supply the parameters we defined, which are <em>(pt2iSpot_A,pt2iSpot_B, fSpotSizePix,aiColor_A,aiColor_B)</em>, meaning xy for spot Red, xy for spot Green, size of spot, color spot Red, color Spot Green.</p>
+<p>xy for both spots we already made above (m_pt2fSpotPos_Red and m_pt2fSpotPos_Green), the spotsize is the same for both and defined in the config file (m_fSpotRad) and the color triplet for green is [0 255 0] and for red [255 0 0].
+The complete function call you know should have is this:</p>
+<p>fFlipTime = fnDrawTwoSpotsOnStimulusScreen(g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Red, ...
+            g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Green, g_strctParadigm.m_strctCurrentTrial.m_fSpotRad, ...
+                              [255 0 0],[0 255 0]);</p>
+<p>Kofiko displays the spots a second time, after the monkey touched the screen (<strong>case5</strong>), so copy the above function call and replace the old function (<em>fnDrawSpotOnStimulusScreen</em> ) with the new one after the comment  <em>% Show OK to release stimulus</em>.
+The time this function gets called here in case 5 is when the monkey pressed the correct key. To show some visual feedback of the monkey doing something we want (touch the screen), we can just show the dots in color white. So change the color triplets for both dots to [255 255 255]. The complete call at that location is then this:</p>
+<pre><code> % Show OK to release stimulus
+fnDrawTwoSpotsOnStimulusScreen(g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Red, ...
+        g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Green, g_strctParadigm.m_strctCurrentTrial.m_fSpotRad, ...
+                         [255 255 255],[255 255 255]);
+</code></pre>
+<p>If you run the whole thing now, it will show two dots (green and red) on the Stimulus server (touchscreen) but it will crash after, as Kofiko doesn't know what to do next. So now we need to update the handling of the touch events to match our new dots and variable names, but first we will also show the two dots on the Kofiko machine, and also incude the outline border of when a touch counts as inside the spot.</p>
+<h5>Kofiko Machine (Draw file)</h5>
+<p>Go to the file <strong>fnParadigmTouchImageDraw.m</strong>.</p>
+<p>This function runs whenever the machine state (case) is higher than 4 and here is what the experimentor sees and we can also add additional information (trial number, correct choices, etc).
+What happens is that again the size of the spot is taken (<em>m_fSpotRad</em>), then the xy coordinates of the spot are taken (<em>m_pt2fSpotPos</em>), from that the area of a correct touch are calculated (<em>aiValidRect</em>) to be shown as a cicle, and the <em>aiTouchSpotRect</em> vector is calculated that displays the spot. The one that is taken to measure if a touch is within the boundaries is <em>aiValidRect</em>, so the actual spot the monkey sees can be larger or smaller than what actually counts. The spot vector is <em>aiTouchSpotRect</em>.
+Again both get shown by using Screen(). Screen takes as the first argument the physical screen where it should be displayed at. The Kofiko machine (the laptop) has the screen name <em>g_strctPTB.m_hWindow</em>, whereas the stimulus server has the name <em>g_strctStimulusServer.m_hWindow</em>. We call the latter for this Screen.</p>
+<p>Now what we do is just update the four variables that are involved in showing the spot and the boundary we use to measure touch (<em>pt2iSpot, aiTouchSpotRect, aiTouchSpotRect, aiColor</em>) with our _green variable, then copy those and change to red for the second _red variable. </p>
+<p>The whole changed if section is then this:</p>
+<pre><code>if g_strctParadigm.m_iMachineState &gt; 4
+fSpotSizePix = g_strctParadigm.m_strctCurrentTrial.m_fSpotRad;
+fCorrectDist = fnTsGetVar(g_strctParadigm, 'CorrectDistancePix');
+
+%show green spot and boundaries
+pt2iSpot = g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Green(:);
+aiColor = [0 255 0];
+aiTouchSpotRect = g_strctPTB.m_fScale * [pt2iSpot-fSpotSizePix;pt2iSpot+fSpotSizePix];
+aiValidRect = g_strctPTB.m_fScale * [pt2iSpot-fCorrectDist;pt2iSpot+fCorrectDist];
+
+Screen(g_strctPTB.m_hWindow,'FillArc',aiColor, aiTouchSpotRect,0,360);
+Screen(g_strctPTB.m_hWindow,'FrameArc',aiColor, aiValidRect,0,360);
+
+%show red spot and boundaries
+pt2iSpot = g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Red(:);
+aiColor = [255 0 0];
+aiTouchSpotRect = g_strctPTB.m_fScale * [pt2iSpot-fSpotSizePix;pt2iSpot+fSpotSizePix];
+aiValidRect = g_strctPTB.m_fScale * [pt2iSpot-fCorrectDist;pt2iSpot+fCorrectDist];
+
+Screen(g_strctPTB.m_hWindow,'FillArc',aiColor, aiTouchSpotRect,0,360);
+Screen(g_strctPTB.m_hWindow,'FrameArc',aiColor, aiValidRect,0,360);
+end
+</code></pre>
+<h3>Upate Touch event handling</h3>
+<p>The case that handles the touch events is <strong>case 5</strong>.</p>
+<p>The first section of case 5 is what happens is the time passed after trial begin is larger than the timeout value set, meaning the monkey does nothing and it times out.</p>
+<p>The second condition (after the else) is where the touches get handled. The two variables that get compared are the <em>fDistTouchToSpot</em> which is where the monkey touched the screen (read the touch screen in the paramenter <em>m_pt2iEyePosScreen</em>) and the target area location and size <em>fCorrectDist_Red</em>. If the touch is within the target, it was a correct touch, and that gets check at </p>
+<pre><code>if fDistTouchToSpot_Red &lt; fCorrectDist_Red
+</code></pre>
+<p>To now check for only the green spot (correct), we change the parameters to our new variable names (<em>m_pt2fSpotPos_Green</em>). We need to update first the <em>fDistTouchToSpot</em> for green, then also the <em>fCorrectDist</em>. So change those two lines defining those to:</p>
+<pre><code> fDistTouchToSpot_Green = sqrt(sum((strctInputs.m_pt2iEyePosScreen - g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Green).^2));
+            fCorrectDist_Green = fnTsGetVar(g_strctParadigm, 'CorrectDistancePix');
+</code></pre>
+<p>As we also want to check for when the Red spot is touched, we also generate the corresponding boundaries for red, which we add just below above section:</p>
+<pre><code> %monkey touched red circle - correct
+            fDistTouchToSpot_Red = sqrt(sum((strctInputs.m_pt2iEyePosScreen - g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Red).^2));
+            fCorrectDist_Red = fnTsGetVar(g_strctParadigm, 'CorrectDistancePix');
+</code></pre>
+<p>now also update the if case to match those new variables:</p>
+<pre><code> %monkey touched green circle - correct
+ if fDistTouchToSpot_Green &lt; fCorrectDist_Green
+</code></pre>
+<p>if you run this paradigm now, there will be two dots, and touching the green will count as correct. However touching anywhere else will stop the trial as incorrect. What we want is that only when red is touched it will count as incorrect, otherwise the trial should continue until either green is touched or it times out.</p>
+<p>In the current setting, the above if statement gets run whenever there is a touch. If the IF is correct, give reward, for everything else set it to wrong. So all we need to do is replace the ELSE with a second if for the red button. That way any touch will trigger the IF section, if touc is inside green give reward, if inside red count as wrong, if neither, do nothing.</p>
+<p>As the whole WRONG procedures are already present after the ELSE statement, all we really need to do is change the else line to this:</p>
+<pre><code>%monkey touched red circle - wrong
+elseif fDistTouchToSpot_Red &lt; fCorrectDist_Red
+</code></pre>
+<p>now we replaced the general ELSE with this second IF, so now the paradigm will only stop for those two condition, red and green spot touched, otherwise continue until timeout.</p>
+<p>If you run the paradigm now it should show a red and a green dot and moving the mouse (or touching) the red dot will count as an error, the green as correct.</p>
+<h2>PART3</h2>
+<p>Next we want to add a penalty time if the monkey pushes the wrong button. 
+For that we will add a new state to the file <strong>fnParadigmTouchImageCycle.m</strong> which handles what happens after a wrong choice.
+We add a new case a the bottom (after case 7 and the <em>end</em> of the <em>if</em> loop, called case 8.</p>
+<p>We wait for a set amount of time, which we store in a new variable to wait 5 seconds</p>
+<pre><code>  fPenalty_Time = 5;
+</code></pre>
+<p>Next we need to store the current time which we then compare the passed time against to see when 5 seconds have passed. Kofiko keeps a continoues timer in the variable <em>fCurrTime</em>. As the Kofiko cycles through the TouchImageCycle file over and over again, each time updating the timer, you can just set a variable to the current timer to get the current time withint the experiment. We need to set this value right after the monkey made a wrong decision and before we exit that if statment (if we do it here, the timer will update every loop again and we will never pass 5 seconds. So we go to <strong>case 5</strong> again, find the section with this if </p>
+<pre><code>  %monkey touched red circle - wrong
+            elseif fDistTouchToSpot_Red &lt; fCorrectDist_Red
+</code></pre>
+<p>which is the case of a wrong response. Further down you see how the machine state is set to state 1 (initiate new trial), which we change to 8 to have the cycle go to our new penalty case. </p>
+<pre><code>g_strctParadigm.m_iMachineState = 8;
+</code></pre>
+<p>As in the end of case 8 we set the machine state to case 1 everything will go back to its normal course after the delay.
+We also want to clear the screen so there is distracting information for the monkey to see. The command for that is </p>
+<pre><code> % Clear Stimulus Screen
+   fnFlipWrapper(g_strctStimulusServer.m_hWindow, 0, 0, 2); % Non blocking flip
+</code></pre>
+<p>which we put right below what we wrote above.
+Now we add that timer below that line</p>
+<pre><code>g_strctParadigm.m_fTimer_Penalty = fCurrTime;
+</code></pre>
+<p>We also want to clearly show the experimentator that the monkey did a wrong choice, so we just remove the filled dots while waiting for the penalty delay, which will also allow to see if the monkey tries to correct his choice during the penalty time.
+For that, we simply set the size of the inner dot to 0, so only the outer area remains by adding this line somewhere in that loop:</p>
+<pre><code>g_strctParadigm.m_strctCurrentTrial.m_fSpotRad = 0;
+</code></pre>
+<p>What this does is that it changes the size of the dot to 0, and as the function <em>TouchImageDraw</em> gets called whenever the state is higher than 4 (which it is now, as we set it to 8), it will draw the dots on the experimentor screen with our new size 0.</p>
+<p>That whole section now looks like this:</p>
+<pre><code>  %monkey touched red circle - wrong
+            elseif fDistTouchToSpot_Red &lt; fCorrectDist_Red
+
+                if ~g_strctParadigm.m_bMultipleAttempts
+
+                    % inCorrect trial
+                    if g_strctParadigm.m_bPlayIncorrect
+                        wavplay(g_strctParadigm.m_afIncorrectTrialSound, g_strctParadigm.m_fAudioSamplingRate,'async');
+                    end
+                    g_strctParadigm.m_strctStatistics.m_iNumIncorrect=g_strctParadigm.m_strctStatistics.m_iNumIncorrect+1;
+
+                    g_strctParadigm.m_strctCurrentTrial.m_strResult = 'Incorrect';
+                    fnTsSetVarParadigm('acTrials', g_strctParadigm.m_strctCurrentTrial);
+                    g_strctParadigm.m_iMachineState = 8;
+
+                   g_strctParadigm.m_strctCurrentTrial.m_fSpotRad = 0;
+
+                      % Clear Stimulus Screen
+                    fnFlipWrapper(g_strctStimulusServer.m_hWindow, 0, 0, 2); % Non blocking flip
+                    fnParadigmToKofikoComm('CriticalSectionOff');
+                    g_strctParadigm.m_fTimer_Penalty = fCurrTime;
+                end
+
+            end
+</code></pre>
+<p>going back to <strong>case 8</strong>, now all we need to do is keep checking the Kofiko Timer (fCurrTime) and wait until the Kofiko timer - our own timer from section 5 is larger than our fPenalty_Time.</p>
+<p>As the file cycles, fCurrTime will increase with each cycle. We use an if statment, not a while loop. We also want to show what is going on on the screen, so we will make one loop that is true if the timer has not passed the penalty time to display 'Penalty wait x sec' and after the time has passed changes to 'Waiting for monkey to initiate trial'. In this last case we also need to change the machine state to 1 (case 1, which means start new trial), otherwise it will keep cycling into case 8 forever.</p>
+<p>The whole <strong>case 8</strong> looks like this now:</p>
+<pre><code> case 8
+   %wait Penalty time
+
+   % fTimeout = fnTsGetVar(g_strctParadigm,'TrialTimeOutSec');
+   fPenalty_Time = 5;
+
+   if fCurrTime - g_strctParadigm.m_fTimer_Penalty &lt; fPenalty_Time
+       fnParadigmToKofikoComm('SetParadigmState',...
+        sprintf('Waiting for penalty delay %d sec',round(fPenalty_Time - (fCurrTime - g_strctParadigm.m_fTimer_Penalty))));
+
+   else
+        g_strctParadigm.m_iMachineState = 1;
+        fnParadigmToKofikoComm('SetParadigmState', 'Waiting for monkey to initiate trial');
+   end
+</code></pre>
+<p>When you now run this, you will see on the bottom of the Kofiko screen how the state changes from 5 to 8 when the red dot is touched, and how the time runs down.</p>
+<h2>PART4</h2>
+<p>Next we want to be able to set the variables during the experiment. When you run the paradigm, you can see there are already sliders present for the amount of juice (how long the valve is open), how many trials, the minimal and maximal trial interval, which, if you go to case 1 in <em>TouchImageCycle</em> you can see gets randomly picked by the line </p>
+<pre><code>g_strctParadigm.m_fWaitInterval = rand() * (fMax-fMin) + fMin;
+</code></pre>
+<p>Other parameters to set are the distance of the area of where a touch counts (the circle you can see on the Kofiko server), which you can set with CorrectDistancePx, then also the size of the circle the monkey sees (SpotRadius). </p>
+<p>Then the GUI contains checkboxes at the bottom for Trial Start Audio, Timeout Audio, Correct Audio and Incorrect Audio. </p>
+<p>The last two boxes are to set if the monkey starts the trial by a touch andwhere on the screen (which will ignore the intertrial times you set) and the last is a multi attempt approach, where a wrong touch gets ignored (with no penalty delay or count).
+We want to add one new checkbox to set to randomly change the buttons around, then a second one that rewards both dots (red and green) for initial training and also a slider where you can set the penalty timeout time.</p>
+<h3>Adding new GUI elements</h3>
+<p>Go to the file that creates the GUI, <strong>fnParadigmTouchImageGUI.m</strong>.
+We want to add a new section after </p>
+<pre><code>strctControllers.m_hMultipleAttempts..
+</code></pre>
+<p>Copy that whole section (the four lines of strctControllers.m_hMultipleAttempts) and past them below.</p>
+<p>We want to change all the namings from <em>MulitpleAttempts</em> to <em>RandomOrder</em>. Also, as we add a new checkbox, we need to set the Position to be above the others, which would be [10 80 140 15]. The whole new added section now looks like this:</p>
+<pre><code>strctControllers.m_hRandomOrder = uicontrol('Style','checkbox','String','Random Order',...
+'Position',[10 80 140 15],'HorizontalAlignment','Left','Parent',...
+</code></pre>
+<p>hParadigmPanel,'Callback',[g_strctParadigm.m_strCallbacks,'(''ToggleRandomOrder'');'],'value',...
+    g_strctParadigm.m_bRandomOrder);</p>
+<p>We add another checkbox for the <em>reward_both</em> below, with the code</p>
+<pre><code>strctControllers.m_hRewardBoth = uicontrol('Style','checkbox','String','Reward Both',...
+'Position',[160 80 140 15],'HorizontalAlignment','Left','Parent',...
+</code></pre>
+<p>hParadigmPanel,'Callback',[g_strctParadigm.m_strCallbacks,'(''RewardBoth'');'],'value',...
+    g_strctParadigm.m_bRewardBoth);</p>
+<p>For the slider, we add a new slider callback, if you look at the fnAddTextSlider.. functions above the checkbox function you see how they are organized, which is the similar as with the checkboxes. We copy paste one of the sections and change the variable names to generate this new slider:</p>
+<pre><code>strctControllers = fnAddTextSliderEditComboSmallWithCallback(strctControllers, 80+30*7, ...
+ 'Penalty delay (sec):', 'PenaltySec',  0, 300, [1 5], fnTsGetVar(g_strctParadigm,'PenaltySec'));
+</code></pre>
+<p>The min and max values for the slider are set to 0 and 300. You can change those values to what you need.</p>
+<p>Next we need to add this new setting to all the Callback cases. First we make a new variable. Open <strong>fnParadigmTouchImageInit.m</strong> and behind the line <em>g_strctParadigm.m_bMultipleAttempts</em> at the top add our new three variables: </p>
+<pre><code>g_strctParadigm.m_bToggleRandomOrder =  g_strctParadigm.m_fInitial_RandomOrder;
+g_strctParadigm.m_bRewardBoth =  g_strctParadigm.m_fInitial_RewardBoth;
+g_strctParadigm = fnTsAddVar(g_strctParadigm, 'PenaltySec', g_strctParadigm.m_fInitial_PenaltySec, iSmallBuffer);
+</code></pre>
+<p>For the first example, this creates the variable m_bToggleRandomOrder which is part of our struct g_strctParadigm and sets it to what we set it to in the config file. For this to work we also need to add that <em>Initial_RandomOrder</em> to our config file. </p>
+<p>Find the file <strong>TouchImageTraining.xml</strong> here</p>
+<blockquote>
+<p>\Config\KofikoConfigForDifferentRigs\</p>
+</blockquote>
+<p>open it outside of matlab (right click) and then as we did earlier in the section of <em>&lt;Paradigm Name = "Touch Image Training"</em> add a a new variable below <em>Initial_MultipleAttempts</em> by adding this line</p>
+<pre><code> Initial_RandomOrder = "0"
+</code></pre>
+<p>Then save and exit. When this config file is read at the startup, our new variable <em>Initial_RandomOrder</em> gets parsed as <em>g_strctParadigm.m_fInitial_RandomOrder</em> (so in this case to 0). which is what we need. If you want the default at startup to have the tickbox ticked, use "1" instead of "0".</p>
+<p>Again, we also add a default entry for the <em>reward_both</em> and <em>Penalty_Sec</em> by adding this:</p>
+<pre><code>Initial_RewardBoth = "0"
+Initial_PenaltySec = "5"
+</code></pre>
+<p>This sets the tickbox for reward both to unticked and the slider for Penalty Sec to 5. Save the file.
+Now we need to add a way to change this variable in case the checkbox is ticked.</p>
+<p>Open the file <strong>fnParadigmTouchImageCallbacks.m</strong> and add the new case at the bottom before the <em>otherwise</em></p>
+<pre><code> case 'ToggleRandomOrder'
+    g_strctParadigm.m_hRandomOrder = ~g_strctParadigm.m_bToggleRandomOrder;
+    set(g_strctParadigm.m_strctControllers.m_hToggleRandomOrder,'value',g_strctParadigm.m_bToggleRandomOrder);
+</code></pre>
+<p>What happens here is that this file Callbacks.m gets called whenever something has been clicked in the GUI. If you new checkbox has been clicked, the case ToggleRandomOrder (which is our checkbox) gets called. The first line inverts what the boolean that is there (if it was 1, it is now 0, if was 0 is now 1), then the set will change the button to either be ticked (if now 1) or unticked (if now 0). m_hRadomOrder is the handle of the tickbox, which is then changed according to the new value.</p>
+<p>We do the same for the <em>reward_both</em> case by adding another case below:</p>
+<pre><code> case 'RewardBoth'
+    g_strctParadigm.m_bRewardBoth = ~g_strctParadigm.m_bRewardBoth;
+    set(g_strctParadigm.m_strctControllers.m_hRewardBoth,'value',g_strctParadigm.m_bRewardBoth);
+</code></pre>
+<p>For the slider, there are no different states (ticked or not), so we can just read if straight of the slider element. We do that by adding </p>
+<pre><code> case 'PenaltySec'
+</code></pre>
+<p>further on top of the file where the other slider cased are.</p>
+<h3>Handling the new GUI cases</h3>
+<p>Now we need to do something when those variables change.
+For the checkboxes we now that we have a variable that is either 0 or 1 depeding if ticked, we can now check for that and randomise the sided.
+As we did above, the position of the red and green dot is set in the file <strong>fnParadigmTouchImageCycle.m</strong> within case 1. What we now want to do is to flip the position of the dots around if the RandomOrder variable is set (meaning the box is ticked). So we first check if the variable is set by </p>
+<pre><code>if g_strctParadigm.m_bToggleRandomOrder
+--flip here
+end
+</code></pre>
+<p>First we need to pick a random case which is true for 50% of the time. The fuction <em>rand()</em> returns a value between 0.0 and 1.0. So we just check </p>
+<pre><code>if rand() &gt; 0.5
+</code></pre>
+<p>which should be true in half the cases. If true we just flip the coordinates of red and green around (we need to save one of them in a temporay variable). The while new parameter case looks now like this:</p>
+<pre><code> %flip coordinates around if set to random
+    if g_strctParadigm.m_bToggleRandomOrder
+        if rand() &gt; 0.5
+            tempxy = g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Green;
+            g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Green = g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Red;
+            g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Red = tempxy;
+        end
+    end
+</code></pre>
+<p>If you now run Kofiko and check the random order box it should randomly alternate the sides.</p>
+<p>For the delay, when we added the case 8 above we set the delay to 5 seconds (look in the file <strong>TouchImageCycle</strong>, case 8), by using</p>
+<pre><code>fPenalty_Time = 5
+</code></pre>
+<p>so all we need to do to use the setting from the penalty delay slider is to replace that with </p>
+<pre><code>fPenalty_Time = fnTsGetVar(g_strctParadigm,'PenaltySec');
+</code></pre>
+<p>this function reads the slide setting and uses its current value.  As it does that with each trial, you can change the slider setting during the experiment to adjust.</p>
+<p>Now, to be able to reward both if a checkbox if pressed, it requires a little more work. Currently, the green button is set to be correct, the red to be wrong. To be more flexible we need to be able to not treat green as correct and red as wrong but as two buttons. To make it less messy it makes sense to wrap all the code that runs for a correct press and an incorrect press into a distinct function (DoOnCorrect, DoOnWrong), so we can then at the place in the code where a button is pressed instead of doing all the maintenance (give reward, log events,etc) just call a function in a single line. That means we can then use a few cases for each button without it getting messy.
+The way to do that is to just copy (and then delete) all the code in <strong>case 5</strong> between line </p>
+<pre><code>if fDistTouchToSpot_Green &lt; fCorrectDist_Green
+</code></pre>
+<p>and including line</p>
+<pre><code>g_strctParadigm.m_iMachineState = 7; % Wait for monkey release
+</code></pre>
+<p>to the very bottom of the file. Before that block we define the function by adding </p>
+<pre><code> function fnDoOnCorrect(fCurrTime)
+</code></pre>
+<p>As every variable used in this block is in a global structure we can just simply move it here. The only thing we need to do is add</p>
+<pre><code>global g_strctParadigm
+</code></pre>
+<p>after that function defintion to note that we want to use the global space there. The only variable that is not global is fCurrTime, this is why we pass it into the function. We also add a return at the end.</p>
+<p>The whole <em>DoOnCorrect</em> function looks like this:</p>
+<pre><code>function fnDoOnCorrect(fCurrTime)
+global g_strctParadigm
+g_strctParadigm.m_strctCurrentTrial.m_strResult = 'Correct';
+g_strctParadigm.m_strctCurrentTrial.m_fTrialEnd_TS = fCurrTime;
+fnTsSetVarParadigm('acTrials', g_strctParadigm.m_strctCurrentTrial);
+% Correct trial
+if g_strctParadigm.m_bPlayCorrect
+wavplay(g_strctParadigm.m_afCorrectSound, g_strctParadigm.m_fAudioSamplingRate,'async');
+end
+g_strctParadigm.m_strctStatistics.m_iNumCorrect  = g_strctParadigm.m_strctStatistics.m_iNumCorrect  + 1;
+fnParadigmToKofikoComm('SetParadigmState', 'Correct Trial. Waiting for release');
+% Show OK to release stimulus
+fFlipTime =  fnDrawTwoSpotsOnStimulusScreen(g_strctParadigm.m_strct     CurrentTrial.m_pt2fSpotPos_Red, ...
+g_strctParadigm.m_strctCurrentTrial.m_pt2fSpotPos_Green,       g_strctParadigm.m_strctCurrentTrial.m_fSpotRad, ...
+[255 255 255],[255 255 255]);
+fJuiceTimeMS = fnTsGetVar(g_strctParadigm, 'JuiceTimeMS');
+fnParadigmToKofikoComm('Juice',  fJuiceTimeMS);
+g_strctParadigm.m_iMachineState = 7; % Wait for monkey release
+return
+</code></pre>
+<p>In <strong>case 5</strong> where we deleted the code we used for above function it now only says this (before <em>elseif fDistTouchToSpot_Red &lt; fCorrectDist_Red</em>):</p>
+<pre><code>if fDistTouchToSpot_Green &lt; fCorrectDist_Green
+                 fnDoOnCorrect(fCurrTime)
+</code></pre>
+<p>Which is much shorter and cleaner.</p>
+<p>We now to the same for the case below, we copy and delete everything after line </p>
+<pre><code> if ~g_strctParadigm.m_bMultipleAttempts
+</code></pre>
+<p>until including line</p>
+<pre><code>g_strctParadigm.m_fTimer_Penalty = fCurrTime;
+</code></pre>
+<p>and paste it at the bottom at the file. We add above the pasted code a function definition</p>
+<pre><code>function fnDoOnWrong(fCurrTime)
+</code></pre>
+<p>followed by defining the global space</p>
+<pre><code>global g_strctParadigm  g_strctStimulusServer
+</code></pre>
+<p>and a <em>return</em> at the end to give us this complete OnWrong Function:</p>
+<pre><code>function fnDoOnWrong(fCurrTime)
+global g_strctParadigm  g_strctStimulusServer
+% inCorrect trial
+if g_strctParadigm.m_bPlayIncorrect
+wavplay(g_strctParadigm.m_afIncorrectTrialSound, g_strctParadigm.m_fAudioSamplingRate,'async');
+end
+g_strctParadigm.m_strctStatistics.m_iNumIncorrect=g_strctParadigm.m_strctStatistics.m_iNumIncorrect+1;
+g_strctParadigm.m_strctCurrentTrial.m_strResult = 'Incorrect';
+fnTsSetVarParadigm('acTrials',     g_strctParadigm.m_strctCurrentTrial);
+g_strctParadigm.m_iMachineState = 8;
+g_strctParadigm.m_strctCurrentTrial.m_fSpotRad = 0;
+% Clear Stimulus Screen
+fnFlipWrapper(g_strctStimulusServer.m_hWindow, 0, 0, 2); % Non blocking flip
+fnParadigmToKofikoComm('CriticalSectionOff');
+g_strctParadigm.m_fTimer_Penalty = fCurrTime;
+return
+</code></pre>
+<p>Now we again call this function in <strong>case 5</strong> by adding the call <em>fnDoOnWrong(fCurrTime)</em> into the if case to get us this shorted section:</p>
+<pre><code>elseif fDistTouchToSpot_Red &lt; fCorrectDist_Red
+                if ~g_strctParadigm.m_bMultipleAttempts
+                    fnDoOnWrong(fCurrTime)
+                end
+end
+</code></pre>
+<p>Now that we have a much shorter section that gets called when each button is pressed we can easily add the case where both buttons get rewarded. There is nothing to change in the case of the green button as that gets rewarded anyways. For the red button we just add the case that <em>if not reward both</em> do what is done currently, <em>if reward both</em> don't do the usual but count as correct. The modifed section looks like this:</p>
+<pre><code>%monkey touched red circle
+            elseif fDistTouchToSpot_Red &lt; fCorrectDist_Red
+                %if not reward both
+                if ~g_strctParadigm.m_bRewardBoth
+                    %if not ignore wrong
+                    if ~g_strctParadigm.m_bMultipleAttempts
+                        fnDoOnWrong(fCurrTime)
+                    end
+                %if reward both
+                else
+                   fnDoOnCorrect(fCurrTime) 
+                end
+            end
+</code></pre>
+<p>That should work. If now, let me know.</p>
+  </div>
+
+</div>
+
+      </div>
+    </section>
+
+    
+    <footer class="site-footer">
+      <div class="wrapper">
+          <p>2015 - Stephan Meyer zum Alten Borgloh</p>
+      </div>
+    </footer>
+    
+
+    
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-41594454-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    
+  </body>
+</html>

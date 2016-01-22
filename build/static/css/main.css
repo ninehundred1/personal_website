@@ -6,10 +6,10 @@ dl, dd, ol, ul, figure, a {
 }
 
 body {
-  font-family: 'acumin-pro', sans-serif;
+  font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
   font-size: 16px;
   font-weight: 300;
-  color: #111;
+   color: rgba(32,10,32,.9);
   background-color: #fff;
   -webkit-text-size-adjust: 100%;
 }
@@ -26,17 +26,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: #2a7ae2;
+   color: rgba(100,100,32,.9);
   text-decoration: none;
   transition: .6s;
 }
 
 a:visited {
-  color: #2a7ae2;
+   color: rgba(200,200,32,.2);
 }
 
 a:hover {
-  color: #111;
+  color: rgba(32,32,32,.5);
   text-decoration: none;
 }
 
@@ -72,11 +72,12 @@ a:hover {
 }
 
 .site-title {
-  font-size: 18px;
-  line-height: 57px;
-  text-transform: uppercase;
+  font-size: 29px;
+  line-height: 58px;
   float: left;
-  font-weight: 300;
+  font-weight: 700;
+ font-family: Garamond, “Courier Bold”, Courier, Georgia, Times, “Times New Roman”, serif;
+ text-shadow: 0px 2px 3px #000;
 }
 
 .site-title, .site-title:visited {
@@ -88,28 +89,205 @@ a:hover {
   float: right;
 }
 
-.site-nav .page-link {
+.site-nav .page-link1 {
   text-transform: uppercase;
   color: #fff;
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 300;
+   background-color: rgba(255,0,0,.7);
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    padding-right: 10px;
+  padding-left: 10px;
+   box-shadow: 1px 1px 1px rgba(0,0,0,.9);
+    text-shadow: 1px 1px 1px rgba(255,255,255, .22);
+ 
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+ 
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+    box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+ 
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
+    -ms-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+
+}
+
+.site-nav .page-link2 {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+   background-color: rgba(0,255,0,.7);
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    padding-right: 10px;
+  padding-left: 10px;
+   box-shadow: 1px 1px 1px rgba(0,0,0,.9);
+    text-shadow: 1px 1px 1px rgba(255,255,255, .22);
+ 
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+ 
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+    box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+ 
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
+    -ms-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}
+.site-nav .page-link3 {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+   background-color: rgba(0,0,255,.7);
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    padding-right: 10px;
+  padding-left: 10px;
+   box-shadow: 1px 1px 1px rgba(0,0,0,.9);
+    text-shadow: 1px 1px 1px rgba(255,255,255, .22);
+ 
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+ 
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+    box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+ 
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
+    -ms-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}
+.site-nav .page-link4 {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+   background-color: rgba(255,0,255,.7);
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    padding-right: 10px;
+  padding-left: 10px;
+   box-shadow: 1px 1px 1px rgba(0,0,0,.9);
+    text-shadow: 1px 1px 1px rgba(255,255,255, .22);
+ 
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+ 
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+    box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+ 
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
+    -ms-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}
+
+.site-nav .page-link5 {
+  text-transform: uppercase;
+  color: rgba(0,0,0,.9);
+  font-size: 20px;
+  font-weight: 300;
+   background-color: rgba(255,255,0,.7);
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    padding-right: 10px;
+  padding-left: 10px;
+   box-shadow: 1px 1px 1px rgba(0,0,0,.9);
+    text-shadow: 1px 1px 1px rgba(255,255,255, .22);
+ 
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+ 
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+    box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+ 
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
+    -ms-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}
+
+.site-nav .page-link1:hover {
+  background-color: rgba(0,0,0,.9);
+}
+.site-nav .page-link2:hover {
+  background-color: rgba(0,0,0,.9);
+}
+.site-nav .page-link3:hover {
+  background-color: rgba(0,0,0,.9);
+}
+.site-nav .page-link4:hover {
+  background-color: rgba(0,0,0,.9);
+}
+
+.site-nav .page-link5:hover {
+  background-color: rgba(0,0,0,.9);
+  color: rgba(255,255,255,.9);
 }
 
 .site-nav .page-link:not(:first-child) {
   margin-left: 20px;
 }
 
+
+/*background image*/
+
+
+.hero-unit {
+  background: url('http://graygilmore.com/images/bk-body.jpg') no-repeat center center fixed;
+  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  opacity: 1;
+  
+  -webkit-animation-name: fade-in;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-delay: 0s;
+}
+
+.hero-unit.visible {
+  opacity: 1;
+}
+
 .hero-unit {
   width: 100%;
   text-align: center;
   position: relative;
-  height: 500px;
+  height: 350px;
   background: no-repeat center center/cover #eee;
   color: #fff;
 }
 
+ /*overlay above background image*/
 .hero-unit .overlay {
-  background-color: rgba(32,32,32,.8);
+  background-color: rgba(10,40,40,.2);
   bottom: 0;
   height: 100%;
   left: 0;
@@ -117,31 +295,56 @@ a:hover {
   right: 0;
   top: 0;
   z-index: 200;
+
 }
+
+
+@import "compass/css3";
+
+@-webkit-keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
 
 .hero-unit .inner {
   position: relative;
   z-index: 300;
   position: relative;
-  top: 50%;
+  top: 90%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+  opacity: 1;
+  
+  -webkit-animation-name: fade-in;
+  -webkit-animation-duration: 4s;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-delay: 0s;
+
 }
 
 .hero-unit .inner h3 {
+
   font-family: 'proxima-nova-alt-ext-cond';
   font-weight: 400;
-  text-transform: uppercase;
   color: #fffef8;
-  letter-spacing: 1.3px;
+  letter-spacing: 4px;
+
+
+ 
 }
 
 .hero-unit .inner h1 {
+    background-color: rgba(32,32,32,.8);
   color: #fff;
   font-family: 'proxima-nova-alt-ext-cond';
   text-transform: uppercase;
   font-weight: 400;
+
 }
 
 .hero-unit .inner a {
@@ -149,10 +352,11 @@ a:hover {
   font-family: 'proxima-nova-alt-ext-cond';
   text-transform: uppercase;
   font-weight: 400;
+
 }
 
 .hero-unit .inner a:hover {
-  color: #fff;
+  color: rgba(32,32,32,.9);
 }
 
 .content {
@@ -196,16 +400,23 @@ a:hover {
   }
 }
 
+
+
 .home-section .post .overlay {
-  background-color: rgba(32,32,32,.8);
+  background-color: rgba(32,32,32,.7);
   bottom: 0;
-  height: 100%;
+   height: 100%;
   left: 0;
   position: absolute;
   right: 0;
   top: 0;
   z-index: 200;
 }
+
+
+.home-section .post:hover .overlay {-webkit-filter: opacity(40%) }
+
+
 
 .home-section .post .inner {
   position: relative;
@@ -222,6 +433,8 @@ a:hover {
   text-transform: uppercase;
   font-weight: 400;
   color: #fff;
+
+
 }
 
 .home-section .post a {
@@ -236,6 +449,7 @@ a:hover {
   opacity: 0;
   display: block;
 }
+
 
 .page-heading {
   font-size: 20px;
@@ -261,12 +475,17 @@ a:hover {
 
 .post-meta {
   font-size: 14px;
-  color: #828282;
+  color: rgba(0,0,32,1);
+  font-family: 'proxima-nova-alt-ext-cond';
+ background-color: rgba(255,255,255,.7);
 }
 
 .post-link {
   display: block;
-  font-size: 24px;
+  font-size: 25px;
+  font-family: 'proxima-nova-alt-ext-cond';
+  font-weight: 400;
+ 
 }
 
 /**
@@ -274,12 +493,15 @@ a:hover {
  */
 .post-header {
   margin-bottom: 30px;
+
 }
 
 .post-title {
   font-size: 30px;
   letter-spacing: -1px;
   line-height: 1;
+
+
 }
 
 .post-content {
@@ -288,6 +510,7 @@ a:hover {
 
 .post-content h2 {
   font-size: 32px;
+
 }
 
 @media screen and (max-width: 800px) {
@@ -297,12 +520,14 @@ a:hover {
 }
 
 .post-content h3 {
-  font-size: 26px;
+  font-size: 20px;
+
 }
 
 @media screen and (max-width: 800px) {
   .post-content h3 {
     font-size: 22px;
+
   }
 }
 
@@ -317,9 +542,11 @@ a:hover {
 }
 
 .site-footer {
-  padding: 30px 0;
+  padding: 5px 5;
   background-color: #111;
   color: #fff;
+   text-align: right;
+    font-family: 'proxima-nova-alt-ext-cond';
 }
 
 .footer-heading {
@@ -334,14 +561,14 @@ a:hover {
 ul.social-links {
   display: block;
   list-style-type: none;
-  text-align: center;
+  text-align: right;
   margin: 0;
   padding: 0; }
   ul.social-links li {
     display: inline-block;
-    margin: 0 5px; }
+    margin: 0 1px; }
   ul.social-links li i {
-    font-size: 20px; }
+    font-size: 40px; }
   ul.social-links li a {
     color: #fff; }
 
@@ -491,3 +718,4 @@ li.L7,
 li.L9 {
   /* */
 }
+
