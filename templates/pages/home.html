@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block hero_unit %}
+<section class="hero-unit" style="background-image: url({{ url_for('static', filename=latest.image) }});">
+  <div class="overlay"></div>
+  <div class="inner">
+    <h3>Latest Note</h3>
+    <h1><a href="{{ url_for('note', name=latest.path) }}">{{ latest.title }}</a></h1>
+  </div>
+</section>
+{% endblock hero_unit %}
+
+{% block content %}
+<section class="home-section">
+  <h2>Featured Notes</h2>
+  <div class="post-list">
+    {% for post in featured %}
+    <figure class="post" style="background-image: url({{ url_for('static', filename=post.image) }});">
+      <div class="overlay"></div>
+      <figcaption class="inner">
+        <h3>{{ post.title }}</h3>
+      </figcaption>
+      <a class="post-link" href="{{ url_for('note', name=post.path) }}"></a>
+    </figure>
+    {% endfor %}
+  </div>
+</section>
+
+
+<!--
+<section class="home-section">
+  <h2>Selected Work</h2>
+  <div class="post-list">
+    {% for post in posts %}
+    {% if loop.index != 1 %}
+    <figure class="post" style="background-image: url({{ url_for('static', filename=post.image) }});">
+      <div class="overlay"></div>
+      <figcaption class="inner">
+        <h3>{{ post.title }}</h3>
+      </figcaption>
+      <a class="post-link" href="{{ url_for('note', name=post.path) }}"></a>
+    </figure>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+-->
+{% endblock content %}

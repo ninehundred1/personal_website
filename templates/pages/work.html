@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block hero_unit %}
+<section class="hero-unit" style="background-image: url({{ url_for('static', filename='img/work.jpg') }});">
+  <div class="overlay"></div>
+  <div class="inner">
+    <h1>Work related</h1>
+  </div>
+</section>
+{% endblock hero_unit %}
+
+{% block content %}
+<h2 class="text-center">Work Related Software</h2>
+
+<h3><a href="https://github.com/ninehundred1/CalciumSignalExtract">Calcium Signal Extract</a></h3>
+<p> Created a Matlab Software package that automatically segments fluorescence image stacks into ROIs based on correlated temporal and spatial dynamics of pixel values. Differential morphology and fluorescence activity of the individual cells is automatically extracted and plotted.</p>
+
+<h3><a href="https://github.com/ninehundred1/BehaviorBox">Behavioral Training</a></h3>
+<p>Developed a Matlab platform for controlling multiple different behavioral paradigms in terms of stimuli and different modules. Hardware interfacing with RFID sensors, microcontrollers, valves and LEDs. Visual stimuli are generated in multiples ways. Data is analysed and plot in real time.</p>
+
+<h3><a href="https://github.com/ninehundred1/ObjectTracker">Object Tracker</a></h3>
+<p>Build a Python package that can track multiple (10s - 100s) of objects in a video or a camera stream and define areas where entry of an object is to be monitored using computer Vision libraries.</p>
+
+<h3><a href="https://github.com/ninehundred1/ScanImage_Navigator">ScanImage Navigator</a></h3>
+<p>Developed a Matlab GUI plugin to read the stepper motors of the microscope stage/objective in a coordinate system. Movement paths can be plotted, recorded and commands be sent to the microscope motors to program the stage movement.</p>
+
+<h3><a href="https://github.com/ninehundred1/n_sci">Misc Python stuff</a></h3>
+<p>Different Python Scripts and functions for image analysis and handling</p>
+
+
+
+
+
+{% endblock content %}

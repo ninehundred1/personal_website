@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block hero_unit %}
+<section class="hero-unit" style="background-image: url({{ url_for('static', filename=post.image) }});">
+  <div class="overlay"></div>
+  <div class="inner">
+    <h1>{{ post.title }}</h1>
+    <p class="post-meta">Post date : {{ post.date | date }}</p>
+  </div>
+</section>
+{% endblock hero_unit %}
+
+{% block content %}
+<div class="post">
+
+  <div class="post-content">
+    {{ post.html | safe }}
+  </div>
+
+</div>
+{% endblock content %}
+

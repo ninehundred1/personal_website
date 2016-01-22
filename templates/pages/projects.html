@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block hero_unit %}
+<section class="hero-unit" style="background-image: url({{ url_for('static', filename='img/projects.jpg') }});">
+  <div class="overlay"></div>
+  <div class="inner">
+    <h1>Other Projects</h1>
+  </div>
+</section>
+{% endblock hero_unit %}
+
+{% block content %}
+<h2 class="text-center">Data Science</h2>
+
+<h3><a href="https://github.com/ninehundred1/DataScience_NYC_taxis">NYC taxis</a></h3>
+<p>Mapping of NYC cab hailing behavior, locations, times, revenue, trip length and passenger number of over 20 million NYC cab rides in January 2015 using Python, MongoDB databases, Pandas dataframes and several plotting, mapping and animation libraries.</p>
+
+<h3><a href="https://github.com/ninehundred1/DataScience_Baseball_Tweets">World Series Twitter Scraping</a></h3>
+<p>Comparison of scraped tweets sent over the course of the World Series Baseball game NY Mets vs Kansas City Royals in 2015 using Python, MongoDB, Twitter streaming (tweepy) and plotting.</p>
+
+
+<h2 class="text-center">Others</h2>
+
+<h3><a href="https://github.com/ninehundred1/MiscStuff">This page</a></h3>
+<p>This website using Flask, HTML, CSS and Flatpages.</p>
+
+<h3><a href="https://github.com/ninehundred1/MiscStuff">Misc Python Stuff</a></h3>
+<p>Twitter Streaming, etc.</p>
+
+{% endblock content %}

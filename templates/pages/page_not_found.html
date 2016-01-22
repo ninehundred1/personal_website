@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block hero_unit %}
+<section class="hero-unit" style="background-image: url({{ url_for('static', filename='img/page_not_found.jpg') }});">
+  <div class="overlay"></div>
+  <div class="inner">
+    <h1> </h1>
+  </div>
+</section>
+{% endblock hero_unit %}
+
+{% block content %}
+<h2 class="text-center">404 Page not Found. If in need of entertainment::</h2>
+
+<h3><a href="http://www.wherecoolthingshappen.com/top-posts/">Look at this.</a></h3>
+
+
+<h3><a href="http://uncrate.com/">Or this.</a></h3>
+
+<h3><a href="http://www.popcap.com/all-games">Or play some games..</a></h3>
+
+{% endblock content %}

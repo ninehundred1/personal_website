@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block hero_unit %}
+<section class="hero-unit" style="background-image: url({{ url_for('static', filename='img/notes.jpg') }});">
+  <div class="overlay"></div>
+  <div class="inner">
+    <h1>Notes & Posts</h1>
+  </div>
+</section>
+{% endblock hero_unit %}
+
+{% block content %}
+<section class="section-home">
+  <ul class="post-list">
+    {% for post in posts %}
+    <li>
+      <h3><a class="post-link" href="{{ url_for('note', name=post.path) }}">{{ post.title }}</a></h3>
+      <span class="post-meta">{{ post.date | date }}</span>
+      {{ post.html | excerpt | safe }}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock content %}
